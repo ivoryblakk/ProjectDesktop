@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-
+import  Dashboard from './components/Dashboard';
 function App() {
   return (
     <div className="App">
@@ -8,7 +8,7 @@ function App() {
       <nav> Project Dashboard</nav>
       </header>
       <main>
-     
+      <Dashboard />
       </main> 
       <footer> ©2022 A.G.I Production LLC</footer>
     </div>
