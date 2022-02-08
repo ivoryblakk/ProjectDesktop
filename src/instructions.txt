@@ -1,0 +1,20 @@
+Each record in the model contains the following properties:
+
+Title – Text
+Division - Text
+Project Owner - Text
+Budget – Number, should be displayed as dollars: $XXX.XX
+Status - Text
+Created Date – date: MM/DD/YYYY
+Modified Date – date: MM/DD/YYYY
+Functionality/Behavior
+Users need to be able to filter/search for the records on any one of the given properties of a record. When filter/searching by date users will supply a range, all other fields would use their corresponding data type. Users can use more than one filter at a time.
+Each record needs to allow a user to: change the status, change the Project Owner, and adjust the budget. These features should be available in-line without going to another page. When a record is changed please provide some sort of feedback to the user.
+Each record needs to supply a link/button/etc to go to a more in-depth page. The link is not active and you don’t need to create the secondary page. This is only to show that each record gives the user the ability to go to another page.
+Management has asked that the screen offer some high-level/summations/statistics about the current records. They are not interested in charts/graphics (they are minimalists at heart), but want some statistics related to the records in the UI, something that tells the story at a glance. They have given you some discretion in terms of what to show and how to show it, but it should reflect the current dataset.
+Please provide inactive/placeholder (non-working) UI elements for Users to:
+add a new record
+export the records on screen to Excel or PDF
+The name/title of the application/page is: Project Dashboard
+Technical Requirements
+Users will be using this from their desktop on at least a 1280x768 monitor. There is no need to build this to be mobile friendly as most users will use this on their desktop. The target browser is the latest stable version of Chrome.

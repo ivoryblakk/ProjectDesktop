@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useReducer } from 'react';
 import { IRecords } from '../interface/interfaces';
-
-type Props = { records: IRecords[] };
+import  {recordsReducer, initialState} from "../store/reducer"
 
 // interface tableInfo {
 //     divison: "Marketing"| "Sales"|"Accounting"|"Production"| "Administration";
@@ -10,8 +9,10 @@ type Props = { records: IRecords[] };
 //     type: string;
 // }
 
-const SummaryTable: React.FC<Props> = ({ records }) => {
+const SummaryTable: React.FC = () => {
 	//let tableData: tableInfo | {} = {}
+    const [state] = useReducer(recordsReducer, initialState);
+    const { records} = state;
 	const [bodyRows, setBodyRows] = useState([]);
 	const tableRows = useCallback(async () => {
 		const tableData: any = {};
@@ -49,6 +50,7 @@ const SummaryTable: React.FC<Props> = ({ records }) => {
 	}, [records]);
 
 	const renderTableBody = () => {
+        console.log('rendered Table')
 		return (
 			bodyRows &&
 			bodyRows.map((item: any, index) => {
@@ -56,6 +58,7 @@ const SummaryTable: React.FC<Props> = ({ records }) => {
 				var statusDelivered = (item.status.match(/delivered/gi) || []).length;
 				var statusArchived = (item.status.match(/archived/gi) || []).length;
 				var statusWorking = (item.status.match(/working/gi) || []).length;
+                console.log('item.budgetTotal  Table', item.budgetTotal )
 				return (
 					<tr key = {index}>
 						<td>{item.division}</td>
