@@ -50,14 +50,14 @@ const SummaryTable: React.FC = () => {
 	}, [records]);
 
 	const renderTableBody = () => {
-        console.log('rendered Table')
+       
 		return (
 			bodyRows &&
 			bodyRows.map((item: any, index) => {
-				var statusNew = (item.status.match(/new/gi) || []).length;
-				var statusDelivered = (item.status.match(/delivered/gi) || []).length;
-				var statusArchived = (item.status.match(/archived/gi) || []).length;
-				var statusWorking = (item.status.match(/working/gi) || []).length;
+				const statusNew = (item.status.match(/new/gi) || []).length;
+				const statusDelivered = (item.status.match(/delivered/gi) || []).length;
+				const statusArchived = (item.status.match(/archived/gi) || []).length;
+				const statusWorking = (item.status.match(/working/gi) || []).length;
                
 				return (
 					<tr key = {index}>
