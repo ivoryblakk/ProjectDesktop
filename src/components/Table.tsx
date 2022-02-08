@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback, useReducer } from 'react';
-import { IRecords } from '../interface/interfaces';
+
 import  {recordsReducer, initialState} from "../store/reducer"
 
 // interface tableInfo {
@@ -58,7 +58,7 @@ const SummaryTable: React.FC = () => {
 				var statusDelivered = (item.status.match(/delivered/gi) || []).length;
 				var statusArchived = (item.status.match(/archived/gi) || []).length;
 				var statusWorking = (item.status.match(/working/gi) || []).length;
-                console.log('item.budgetTotal  Table', item.budgetTotal )
+               
 				return (
 					<tr key = {index}>
 						<td>{item.division}</td>

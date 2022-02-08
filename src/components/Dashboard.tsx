@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useReducer } from "react";
+import React, { useState, useReducer } from "react";
 //import mockData from "../mockData";
 import SummaryTable from "./Table";
 import { IRecords } from "../interface/interfaces";
@@ -9,13 +9,18 @@ import { recordsReducer, initialState } from "../store/reducer"
 const Dashboard: React.FC = () => {
     const [state, dispatch] = useReducer(recordsReducer, initialState);
     const { records, loading } = state;
+    const [showUpdated, setShowUpdated] = useState(false)
     const updateRecord = async (updatedRecord: IRecords) => {
         const indexOfUpdatedRecord = records.findIndex(record => updatedRecord.title === record.title)
         records[indexOfUpdatedRecord] = updatedRecord
-        console.log('records', records[indexOfUpdatedRecord])
         dispatch({ type: 'initUpdateRecords' })
         await dispatch({ type: 'updateRecords', payload: records });
         dispatch({ type: 'completedUpdateRecords' })
+        await setShowUpdated(!showUpdated)
+        await setTimeout(() => {
+            setShowUpdated(false)
+        }, 5000);
+        
     }
 
 
@@ -27,6 +32,7 @@ const Dashboard: React.FC = () => {
             <section className="table">
                 <SummaryTable />
             </section>
+          {showUpdated  && <div> Record updated! </div>}
             <section className="records">
                 <DisplayRecords records={records} updateRecord={updateRecord} />
             </section>

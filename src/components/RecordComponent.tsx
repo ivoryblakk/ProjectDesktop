@@ -9,6 +9,7 @@ const RecordComponent: React.FC<Props> = ({ record, updateRecord,index }) => {
     const [budget, setBudget] = useState(record.budget);
     const [status, setStatus] = useState(record.status);
 
+    //TODO: Refactor updateRecord handleEditRecord
     const handleEditRecord = (record: IRecords) => {
         if (editRecord) {
             console.log('updatedRecord: ', { ...record, project_owner: projectOwner, budget, status })
