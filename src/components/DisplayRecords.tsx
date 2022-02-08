@@ -74,8 +74,8 @@ const DisplayRecords: React.FC<Props> = ({ updateRecord }) => {
     const modifiedFilter = () => {
         return (<div className="datePicker">
             <label htmlFor="modified">Modified Range</label>
-            <input type="date" value={modifiedMin}  min="2015-01-01" max="2015-12-31" name="modified" onChange={(e) => setModifiedMin(e.target.value)} />
-            <input type="date" value={modifiedMax}  min="2015-01-01" max="2015-12-31" name="modified" onChange={(e) => setModifiedMax(e.target.value)} />
+            <input type="date" value={modifiedMin} min="2015-01-01" max="2015-12-31" name="modified" onChange={(e) => setModifiedMin(e.target.value)} />
+            <input type="date" value={modifiedMax} min="2015-01-01" max="2015-12-31" name="modified" onChange={(e) => setModifiedMax(e.target.value)} />
         </div>)
     }
 
@@ -153,9 +153,13 @@ const DisplayRecords: React.FC<Props> = ({ updateRecord }) => {
         </>)
     }
 
-    return (<div>{searchFilterBar()}
-        {filtered.length === 0 ? <span> No Records Match the Search Criteria</span> : filtered.map((record, index) => <RecordComponent key={record.title + index} record={record} updateRecord={updateRecord} index={index} />)}
-    </div>);
+    return (
+
+        <div>
+            <div className="export">  <button>Add Record</button><button>Export Records</button></div>
+            <div className="searchBar"> {searchFilterBar()}</div>
+            {filtered.length === 0 ? <span> No Records Match the Search Criteria</span> : filtered.map((record, index) => <RecordComponent key={record.title + index} record={record} updateRecord={updateRecord} index={index} />)}
+        </div>);
 }
 
 export default DisplayRecords

@@ -17,7 +17,7 @@ const RecordComponent: React.FC<Props> = ({ record, updateRecord,index }) => {
         setEditRecord(!editRecord)
     }
 
-    return (<div>
+    return (<div className="record">
 
         <button onClick={() => handleEditRecord(record)}> {editRecord ? 'Update' : 'Edit'} </button>
         <a href={`https://locahost:3000/${record.title}`}> More Details </a>
