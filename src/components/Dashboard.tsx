@@ -23,8 +23,6 @@ const Dashboard: React.FC = () => {
         
     }
 
-
-
     return (loading) ?
         <div>Loading ...</div>
         :
@@ -34,7 +32,7 @@ const Dashboard: React.FC = () => {
             </section>
           {showUpdated  && <div> Record updated! </div>}
             <section className="records">
-                <DisplayRecords records={records} updateRecord={updateRecord} />
+                <DisplayRecords  updateRecord={updateRecord} />
             </section>
         </>);
 }

@@ -12,7 +12,6 @@ const RecordComponent: React.FC<Props> = ({ record, updateRecord,index }) => {
     //TODO: Refactor updateRecord handleEditRecord
     const handleEditRecord = (record: IRecords) => {
         if (editRecord) {
-            console.log('updatedRecord: ', { ...record, project_owner: projectOwner, budget, status })
             updateRecord({ ...record, project_owner: projectOwner, budget, status })
         }
         setEditRecord(!editRecord)
@@ -45,7 +44,7 @@ const RecordComponent: React.FC<Props> = ({ record, updateRecord,index }) => {
                 </tr>
                 <tr>
                     <td>Budget:</td>
-                    {editRecord ?<td> <input value={budget} type='text' onChange={(e) => setBudget(Number(e.target.value))} /> </td> : <td>{record.budget} </td>}
+                    {editRecord ?<td> <input value={budget} type='text' onChange={(e) => setBudget(Number(e.target.value))} /> </td> : <td>${record.budget} </td>}
                 </tr>
                 <tr>
                     <td>Status:</td>
@@ -57,7 +56,7 @@ const RecordComponent: React.FC<Props> = ({ record, updateRecord,index }) => {
                 </tr>
                 <tr>
                     <td>Modified:</td>
-                    <td>{record.modified == null ? record.created : record.modified} </td></tr>
+                    <td>{record.modified == null ? 'Has not been modified': record.modified} </td></tr>
             </tbody>
         </table>
     </div>)
