@@ -4,8 +4,8 @@ import  Dashboard from './components/Dashboard';
 function App() {
   return (
     <div className="App">
-      <header className="header">
-      <nav> Project Dashboard</nav>
+      <header className="header" style={{textAlign: 'center'}}>
+      <nav> <h1> Project Dashboard </h1></nav>
       </header>
       <main>
       <Dashboard />

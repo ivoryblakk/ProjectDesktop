@@ -40,9 +40,11 @@ const DisplayRecords: React.FC<Props> = ({ updateRecord }) => {
         })
 
         return (<div className="slidecontainer">
-            <label htmlFor="budgetMin">Budget Min</label>
+            
+            <label htmlFor="budgetMin">Budget Min</label> <br/>
             <input type="range" min="0" max={Math.max(...budgets) - 1} value={budgetMin} className="slider" name="budgetMin" onChange={(e) => setBudgetMin(Number(e.target.value))} /> ${budgetMin}
-            <label htmlFor="budgetMax">Budget Max</label>
+            <br/>
+            <label htmlFor="budgetMax">Budget Max</label> <br/>
             <input type="range" min={budgetMin} max={Math.max(...budgets)} value={budgetMax} className="slider" name="budgetMax" onChange={(e) => setBudgetMax(Number(e.target.value))} /> ${budgetMax}
         </div>);
 
@@ -50,7 +52,7 @@ const DisplayRecords: React.FC<Props> = ({ updateRecord }) => {
 
     const statusFilter = () => {
         return (<>
-            <label htmlFor="status">Division</label>
+            <label htmlFor="status">Status</label>
             <select onChange={(e) => setProjectStatus(e.target.value)} value={projectStatus} name="status">
                 <option value=''> Select Status</option>
                 <option value='new'>New</option>
@@ -64,8 +66,9 @@ const DisplayRecords: React.FC<Props> = ({ updateRecord }) => {
 
     const createdFilter = () => {
         return (<div className="datePicker">
-            <label htmlFor="created">Created Range</label>
+            <label htmlFor="created">Created Range</label> <br/>
             <input type="date" value={createdMin} min="2015-01-01" max="2015-12-31" name="created" onChange={(e) => setCreatedMin(e.target.value)} />
+            <br/>
             <input type="date" value={createdMax} min="2015-01-01" max="2015-12-31" name="created" onChange={(e) => setCreatedMax(e.target.value)} />
         </div>)
 
@@ -74,15 +77,17 @@ const DisplayRecords: React.FC<Props> = ({ updateRecord }) => {
     const modifiedFilter = () => {
         return (<div className="datePicker">
             <label htmlFor="modified">Modified Range</label>
+            <br/>
             <input type="date" value={modifiedMin} min="2015-01-01" max="2015-12-31" name="modified" onChange={(e) => setModifiedMin(e.target.value)} />
+            <br/>
             <input type="date" value={modifiedMax} min="2015-01-01" max="2015-12-31" name="modified" onChange={(e) => setModifiedMax(e.target.value)} />
         </div>)
     }
 
     const titleSearch = () => {
-        return (<><label htmlFor="title">Search by Title</label>
-            <input name='title' type='text' value={title} onChange={(e) => setTitle(e.target.value)} />
-        </>)
+        return (<div style={ {paddingTop:'1rem'}}><label htmlFor="title">Search by Title</label>
+            <input style={{width: '100%'}} name='title' type='text' value={title} onChange={(e) => setTitle(e.target.value)} />
+        </div>)
     }
 
 
@@ -139,25 +144,33 @@ const DisplayRecords: React.FC<Props> = ({ updateRecord }) => {
     }
 
     const searchFilterBar = () => {
-        return (<>
-            <div>
-                {titleSearch()}
-            </div>
-            <div>
-                {divisionFilter()}
+        return (
+            <>
+            {titleSearch()}
+            <div style={{display:'flex', justifyContent:'space-between', paddingTop:'1rem'}}>
+
+              <div>  {divisionFilter()}   </div>
+              <div>     {statusFilter()}</div>
+               
+                <div>  
                 {budgetFilter()}
-                {statusFilter()}
+                </div>
+                <div>  
                 {createdFilter()}
+                </div>
+                <div>  
                 {modifiedFilter()}
+                </div>
             </div>
-        </>)
+            </>
+      )
     }
 
     return (
 
-        <div>
-            <div className="export">  <button>Add Record</button><button>Export Records</button></div>
-            <div className="searchBar"> {searchFilterBar()}</div>
+        <div>          
+            <div className="searchBar" style={{backgroundColor:'lightGrey'}}> {searchFilterBar()}</div>
+            <div className="export" style={{display:'flex', justifyContent:'end', paddingTop:'1rem'}}>  <button>Add Record</button><button>Export Records</button></div>
             {filtered.length === 0 ? <span> No Records Match the Search Criteria</span> : filtered.map((record, index) => <RecordComponent key={record.title + index} record={record} updateRecord={updateRecord} index={index} />)}
         </div>);
 }

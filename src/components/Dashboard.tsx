@@ -26,15 +26,19 @@ const Dashboard: React.FC = () => {
     return (loading) ?
         <div>Loading ...</div>
         :
-        (<>
-            <section className="table">
+        (<div className="row">
+              <div className="col"/>
+              <div className="col-10">
+            <section className="table" style={{ paddingTop:'2rem'}}>
                 <SummaryTable />
             </section>
           {showUpdated  && <div> Record updated! </div>}
             <section className="records">
                 <DisplayRecords  updateRecord={updateRecord} />
             </section>
-        </>);
+            </div>
+            <div className="col"/>
+        </div>);
 }
 
 export default Dashboard

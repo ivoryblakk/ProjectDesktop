@@ -81,7 +81,7 @@ const SummaryTable: React.FC = () => {
 	}, [tableRows]);
 
 	return (
-		<table>
+		<table style={{width:'100%'}}>
 			<thead>
 				<tr>
 					<th>Division </th>
