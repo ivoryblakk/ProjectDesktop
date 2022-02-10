@@ -42,25 +42,3 @@ const Dashboard: React.FC = () => {
 }
 
 export default Dashboard
-
-
-// const [state, dispatch] = useReducer(recordsReducer, initialState);
-// const { records} = state;
-// //  const [records, setRecords] = useState<IRecords[]>(mockData)
-// const updateRecord = ( updatedRecord:IRecords)=> {
-//  //  const allRecords = records;
-//    const indexOfUpdatedRecord =  records.findIndex(record=>  updatedRecord.title === record.title)
-// //    console.log( 'indexOfUpdatedRecord', indexOfUpdatedRecord)
-//    records[indexOfUpdatedRecord] = updatedRecord
-//    console.log( 'records' ,records[indexOfUpdatedRecord])
-// //   console.log( 'allRecords' ,allRecords)
-//   dispatch( { type: 'updateRecords', payload: records }) ;
-// //   forceUpdate();
-// }
-// //     const [, updateState] = useState({});
-// //   const forceUpdate = useCallback(() => updateState({}), []);
-
-
-// // useEffect(() => {
-// //      setRecords(records)
-// //      }, [records])
